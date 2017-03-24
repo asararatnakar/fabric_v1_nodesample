@@ -1,0 +1,42 @@
+{
+   "chainName":"fabric-client1",
+   "chaincodeId":"mycc",
+   "channelName":"mychannel",
+   "chaincodeVersion": "v0",
+   "GOPATH":"../artifacts",
+   "chaincodePath":"github.com/example_cc",
+   "keyValueStore":"/tmp/hfc-test-kvs",
+   "orgsList": ["org1","org2"],
+   "channelConfigurationTxn": "../artifacts/channel/mychannel.tx",
+   "users":[
+      {
+         "username":"admin",
+         "secret":"adminpw"
+      }
+   ],
+   "deployRequest":{
+      "functionName":"init",
+      "args":[
+         "a",
+         "100",
+         "b",
+         "200"
+      ]
+   },
+   "invokeRequest":{
+      "functionName":"invoke",
+      "args":[
+         "move",
+         "a",
+         "b",
+         "100"
+      ]
+   },
+   "queryRequest":{
+      "functionName":"invoke",
+      "args":[
+         "query",
+         "b"
+      ]
+   }
+}
