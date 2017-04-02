@@ -7,7 +7,7 @@ The code is from [fabric-sdk-node](https://github.com/hyperledger/fabric-sdk-nod
 #### STEP1: Clone the repo
 
 ```
-https://github.com/asararatnakar/fabric_v1_nodesample
+git clone https://github.com/asararatnakar/fabric_v1_nodesample
 ```
 
 #### STEP2: Install fabric-client fabric-ca-client node modules
