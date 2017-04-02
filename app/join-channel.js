@@ -170,7 +170,7 @@ function joinChannel(org) {
 			eventPromises.push(txPromise);
 		});
 
-		sendPromise = chain.joinChannel(request);
+		let sendPromise = chain.joinChannel(request);
 		return Promise.all([sendPromise].concat(eventPromises));
 	}, (err) => {
 		logger.error('Failed to enroll user \'admin\' due to error: ' + err.stack ? err.stack : err);

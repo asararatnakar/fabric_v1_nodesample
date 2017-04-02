@@ -8,6 +8,7 @@
    "keyValueStore":"/tmp/fabric-client-kvs",
    "orgsList": ["org1","org2"],
    "channelConfigurationTxn": "../artifacts/channel/mychannel.tx",
+   "eventWaitTime":"30000",
    "users":[
       {
          "username":"admin",
