@@ -5,7 +5,7 @@
    "chaincodeVersion": "v0",
    "GOPATH":"../artifacts",
    "chaincodePath":"github.com/example_cc",
-   "keyValueStore":"/tmp/hfc-test-kvs",
+   "keyValueStore":"/tmp/fabric-client-kvs",
    "orgsList": ["org1","org2"],
    "channelConfigurationTxn": "../artifacts/channel/mychannel.tx",
    "users":[

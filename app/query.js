@@ -38,7 +38,6 @@ var tx_id = null;
 var nonce = null;
 var adminUser = null;
 
-//test('\n\n***** End-to-end flow: query chaincode *****', (t) => {
 	// this is a transaction, will just use org1's identity to
 	// submit the request. intentionally we are using a different org
 	// than the one that submitted the "move" transaction, although either org

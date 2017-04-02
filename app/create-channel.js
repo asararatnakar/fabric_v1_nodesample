@@ -64,6 +64,7 @@ function createChannel(){
 	})
 	.then((response) => {
 		logger.debug(' response ::%j',response);
+
 		if (response && response.status === 'SUCCESS') {
 			logger.debug('Successfully created the channel.');
 			return sleep(5000);

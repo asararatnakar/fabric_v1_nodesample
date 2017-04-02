@@ -37,7 +37,7 @@ var ORGS = hfc.getConfigSetting('network-config');
 
 var allEventhubs = [];
 
-var _commonproto = grpc.load(path.join(__dirname, '../node_modules/fabric-client/lib/protos/common/common.proto')).common;
+var _commonProto = grpc.load(path.join(__dirname, '../node_modules/fabric-client/lib/protos/common/common.proto')).common;
 var isSuccess = null;
 //
 //Attempt to send a request to the orderer with the sendCreateChain method

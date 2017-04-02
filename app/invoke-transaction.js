@@ -109,9 +109,6 @@ process.on('exit', function() {
 		logger.info('Successfully enrolled user \'admin\'');
 		adminUser = admin;
 
-		return chain.initialize();
-
-	}).then((nothing) => {
 		nonce = utils.getNonce();
 		tx_id = chain.buildTransactionID(nonce, adminUser);
 		utils.setConfigSetting('E2E_TX_ID', tx_id);
@@ -144,33 +141,16 @@ process.on('exit', function() {
 		var all_good = true;
 		for(var i in proposalResponses) {
 			let one_good = false;
-			let proposal_response = proposalResponses[i];
-			if( proposal_response.response && proposal_response.response.status === 200) {
-				logger.info('transaction proposal has response status of good');
-				one_good = chain.verifyProposalResponse(proposal_response);
-				if(one_good) {
-					logger.info(' transaction proposal signature and endorser are valid');
-				}
+			if (proposalResponses && proposalResponses[0].response && proposalResponses[0].response.status === 200) {
+				one_good = true;
+				logger.info('transaction proposal was good');
 			} else {
 				logger.error('transaction proposal was bad');
 			}
 			all_good = all_good & one_good;
 		}
 		if (all_good) {
-			// check all the read/write sets to see if the same, verify that each peer
-			// got the same results on the proposal
-			all_good = chain.compareProposalResponseResults(proposalResponses);
-			logger.info('compareProposalResponseResults exection did not throw an error');
-			if(all_good){
-				logger.info(' All proposals have a matching read/writes sets');
-			}
-			else {
-				logger.error(' All proposals do not have matching read/write sets');
-			}
-		}
-		if (all_good) {
-			// check to see if all the results match
-			logger.info(util.format('Successfully sent Proposal and received ProposalResponse: Status - %s, message - "%s", metadata - "%s", endorsement signature: %s', proposalResponses[0].response.status, proposalResponses[0].response.message, proposalResponses[0].response.payload, proposalResponses[0].endorsement.signature));
+			logger.debug(util.format('Successfully sent Proposal and received ProposalResponse: Status - %s, message - "%s", metadata - "%s", endorsement signature: %s', proposalResponses[0].response.status, proposalResponses[0].response.message, proposalResponses[0].response.payload, proposalResponses[0].endorsement.signature));
 			var request = {
 				proposalResponses: proposalResponses,
 				proposal: proposal,
