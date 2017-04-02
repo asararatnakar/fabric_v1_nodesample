@@ -28,7 +28,7 @@ var adminUser = null;
 var tx_id = null;
 var nonce = null;
 
-var config = require('./config.json')
+var config = require('../config.json')
 var helper = require('./helper.js');
 var logger = helper.getLogger('Join-Channel');
 

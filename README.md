@@ -49,7 +49,20 @@ cd fabric_v1_nodesample/app
 `node instantiate-chaincode.js`
 
 **INVOKE**
+
 `node invoke-transaction.js`
 
 **QUERY**
+
 `node query.js`
+
+## OR
+
+##### Run the app with shell script
+
+
+```
+cd fabric_v1_nodesample/
+
+./runApp.sh
+```

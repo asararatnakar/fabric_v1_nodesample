@@ -26,7 +26,7 @@ var utils = require('fabric-client/lib/utils.js');
 var Orderer = require('fabric-client/lib/Orderer.js');
 var copService = require('fabric-ca-client/lib/FabricCAClientImpl.js');
 
-var config = require('./config.json');
+var config = require('../config.json');
 var hfc = require('fabric-client');
 hfc.addConfigFile(path.join(__dirname, 'network-config.json'));
 var ORGS = hfc.getConfigSetting('network-config');

@@ -19,7 +19,7 @@ var util = require('util');
 var fs = require('fs');
 var path = require('path');
 
-var config = require('./config.json')
+var config = require('../config.json')
 var helper = require('./helper.js');
 var logger = helper.getLogger('Create-Channel');
 
@@ -51,9 +51,9 @@ function createChannel(){
 	})
 	.then((admin) => {
 		logger.debug('Successfully enrolled user \'admin\'');
-    //process.exit(0)
 		// readin the envelope to send to the orderer
-		data = fs.readFileSync(config.channelConfigurationTxn);
+		//data = fs.readFileSync(config.channelConfigurationTxn);
+		var data = fs.readFileSync(path.join(__dirname, config.channelConfigurationTxn))
 		var request = {
 			envelope : data
 		};
