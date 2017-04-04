@@ -48,6 +48,7 @@ helper.setupChaincodeDeploy();
 		logger.error('Failed to install chaincode in peers of organization"'+config.orgsList[0]+'". ' + err.stack ? err.stack : err);
 	}).then(() => {
 		logger.info('Successfully installed chaincode in peers of organization "'+config.orgsList[1]+'"');
+		logger.debug('\n============ Install chaincode on all organizations COMPLETED ============\n')
 	}, (err) => {
 		logger.error('Failed to install chaincode in peers of organization "'+config.orgsList[1]+'". ' + err.stack ? err.stack : err);
 	}).catch((err) => {
@@ -128,7 +129,6 @@ function installChaincode(org) {
 		}
 		if (all_good) {
 			logger.info(util.format('Successfully sent install Proposal and received ProposalResponse: Status - %s', proposalResponses[0].response.status));
-			logger.debug('\n============ Install chaincode on organizations COMPLETED ============\n')
 		} else {
 			logger.error('Failed to send install Proposal or receive valid response. Response null or status is not 200. exiting...');
 		}

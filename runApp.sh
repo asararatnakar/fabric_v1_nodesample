@@ -1,13 +1,70 @@
 #!/bin/bash
 
-node app/create-channel.js 
+function dkcl(){
+        CONTAINER_IDS=$(docker ps -aq)
+	echo
+        if [ -z "$CONTAINER_IDS" -o "$CONTAINER_IDS" = " " ]; then
+                echo "========== No containers available for deletion =========="
+        else
+                docker rm -f $CONTAINER_IDS
+        fi
+	echo
+}
 
-node app/join-channel.js
+function dkrm(){
+        DOCKER_IMAGE_IDS=$(docker images | grep "dev\|none\|test-vp\|peer[0-9]-" | awk '{print $3}')
+	echo
+        if [ -z "$DOCKER_IMAGE_IDS" -o "$DOCKER_IMAGE_IDS" = " " ]; then
+		echo "========== No images available for deletion ==========="
+        else
+                docker rmi -f $DOCKER_IMAGE_IDS
+        fi
+	echo
+}
 
-node app/install-chaincode.js
+function restartNetwork() {
+	echo
+	cd artifacts
+	docker-compose down
+	dkcl
+	dkrm
+	docker-compose up -d
+	cd -
+	echo
+}
 
-node app/instantiate-chaincode.js
+function installNodeModules() {
+	echo
+	if [ -d node_modules ]; then
+		echo "============== node modules installed already ============="
+	else
+		echo "============== Installing node modules ============="
+		npm install
+	fi
+	echo
+}
 
-node app/invoke-transaction.js
+function execApp(){
+	echo "============== Start node app execution =============="
+	echo ""
+	node app/create-channel.js
 
-node app/query.js
+	node app/join-channel.js
+
+	node app/install-chaincode.js
+
+	node app/instantiate-chaincode.js
+
+	node app/invoke-transaction.js
+
+	node app/query.js
+	echo ""
+	echo "============== App execution completed ============="
+	echo
+}
+
+restartNetwork
+
+installNodeModules
+
+execApp
