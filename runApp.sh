@@ -28,6 +28,7 @@ function restartNetwork() {
 	docker-compose down
 	dkcl
 	dkrm
+	rm -rf $HOME/.hfc-key-store /tmp/fabric-client-kvs*
 	docker-compose up -d
 	cd -
 	echo

@@ -13,9 +13,9 @@
     "node": ">=6.9.5",
     "npm": ">=3.10.10"
   },
-  "devDependencies": {
-    "fabric-ca-client": "1.0.0-alpha.0",
-    "fabric-client": "1.0.0-alpha",
+  "dependencies": {
+    "fabric-ca-client": ">=1.0.0-alpha <1.0.0-alpha.10",
+    "fabric-client": ">=1.0.0-alpha <1.0.0-alpha.10",
     "log4js": "^0.6.38",
     "winston": "^2.2.0"
   },
